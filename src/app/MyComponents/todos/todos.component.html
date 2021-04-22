@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h1 class="text-center mb-3">To Do List By Shreyas</h1><br>
+<div class="container">
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<ul class="list-group">
+    <li class="list-group-item">
+<h3>Your To do List</h3>
+</li></ul>
+<ul class="list-group">
+    <li class="list-group-item">
+<div *ngIf="this.todo.length===0; else elseBlock">No To Dos to dispaly</div>
+    </li></ul>
+<ng-template #elseBlock>
+<div *ngFor = "let todo of todo; index as i ">
+    <app-todo-item [todo]="todo" [i]="i" (todoDelete)= "deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"> </app-todo-item>
+</div>
+</ng-template>
+</div>
+</div>
